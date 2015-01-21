@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -236,5 +237,59 @@ public class StringUtils {
     }
     return result;
   }
+
+  /**
+   * @Title: getConfigParam
+   * @Description: 根据key来获得配置value
+   * @param key
+   * @param fileName
+   * @param 设定文件
+   * @return String 返回类型
+   */
+  public static String getConfigParam(String key, String fileName) {
+    return getConfigParam(key, "", fileName);
+  }
+
+
+  public static String getConfigParam(String key, String defaultValue, String fileName) {
+    String rt = "";
+
+    if (StringUtils.isEmpty(fileName) || StringUtils.isEmpty(key)) {
+      return rt;
+    }
+
+    try {
+      Properties properties = loadConfig(fileName);
+      rt = properties.getProperty(key, defaultValue);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return rt;
+  }
+
+
+  /**
+   * @Title loadConfig
+   * @Description 内部方法，获取props对象
+   * @param fileName
+   * @param 设定文件
+   * @return Properties 返回类型
+   */
+  public static Properties loadConfig(String fileName) {
+    Properties props = new Properties();
+    try {
+      ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+      if (classLoader == null) {
+        classLoader = StringUtils.class.getClassLoader();
+      }
+      InputStream is = classLoader.getResourceAsStream(fileName);
+      props.load(is);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return props;
+  }
+
 
 }

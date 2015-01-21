@@ -47,7 +47,8 @@ public class SolrDemo {
     }
   }
 
-  public void solrSearch() {
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+public void solrSearch() {
     try {
       String baseURL = "http://localhost:8080/solr";
       HttpSolrServer server = new HttpSolrServer(baseURL);
