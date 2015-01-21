@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import junit.framework.TestCase;
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 
 public class SimilaryUtilsTest extends TestCase {
 
@@ -87,7 +87,7 @@ public class SimilaryUtilsTest extends TestCase {
       map = SortUtils.sortByValue(map);
       String result = "";
       for (String key : map.keySet()) {
-        result += key + ConstantParams.TABLE + map.get(key) + ConstantParams.CHANGE_LINE;
+        result += key + Constants.TABLE + map.get(key) + Constants.CHANGE_LINE;
       }
       StringUtils.string2file(result, outputDir + "\\" + outputfilename + ".txt");
     }
@@ -134,7 +134,7 @@ public class SimilaryUtilsTest extends TestCase {
     map = SortUtils.sortByValue(map);
     String result = "";
     for (String key : map.keySet()) {
-      result += key + ConstantParams.TABLE + map.get(key) + ConstantParams.CHANGE_LINE;
+      result += key + Constants.TABLE + map.get(key) + Constants.CHANGE_LINE;
     }
     StringUtils.string2file(result, outputPath);
   }

@@ -14,7 +14,7 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 
 public class StringUtils {
 
@@ -86,7 +86,7 @@ public class StringUtils {
     }
 
     if (isEmpty(splitMark)) {
-      splitMark = ConstantParams.CHANGE_LINE;
+      splitMark = Constants.CHANGE_LINE;
     }
 
     try {
@@ -189,7 +189,7 @@ public class StringUtils {
       br = new BufferedReader(isr);
       String temp = "";
       while ((temp = br.readLine()) != null) {
-        result += (temp + ConstantParams.CHANGE_LINE);
+        result += (temp + Constants.CHANGE_LINE);
       }
       br.close();
       isr.close();

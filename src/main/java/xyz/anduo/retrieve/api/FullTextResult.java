@@ -1,5 +1,7 @@
 package xyz.anduo.retrieve.api;
 
+import java.util.List;
+
 /**
  * 
  * @ClassName: FullTextResult
@@ -9,5 +11,17 @@ package xyz.anduo.retrieve.api;
  *
  */
 public interface FullTextResult {
-
-}
+  
+  public List getResultList();
+  
+  public void setResultList(List resultList);
+  
+  public List getFacetList();
+  
+  public void setFacetList(List facetList);
+  
+  public long getNumFound();
+  
+  public void setNumFound(long numFound);
+  
+} 

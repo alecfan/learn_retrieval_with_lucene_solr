@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 
 public class HtmlUtils {
 
@@ -83,7 +83,7 @@ public class HtmlUtils {
 			BufferedReader br = new BufferedReader(isr);
 			String tmp = "";
 			while ((tmp = br.readLine()) != null) {
-				result += tmp + ConstantParams.CHANGE_LINE;
+				result += tmp + Constants.CHANGE_LINE;
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

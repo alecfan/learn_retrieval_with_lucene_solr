@@ -9,7 +9,7 @@ import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 
 import ICTCLAS.I3S.AC.ICTCLAS50;
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 
 public class SplitWordsUtils {
 
@@ -20,11 +20,11 @@ public class SplitWordsUtils {
    * @return
    */
   public static String ikSplit(String str) {
-    return ikSplit(str, ConstantParams.BLANK, true);
+    return ikSplit(str, Constants.BLANK, true);
   }
 
   public static String ikSplit(String str, boolean b) {
-    return ikSplit(str, ConstantParams.BLANK, b);
+    return ikSplit(str, Constants.BLANK, b);
   }
 
   /**

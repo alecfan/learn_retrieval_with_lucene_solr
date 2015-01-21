@@ -7,7 +7,7 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 import xyz.anduo.myretrieval.util.StringUtils;
 
 public class LocalParser {
@@ -29,8 +29,8 @@ public class LocalParser {
 			String date = doc.getElementById("pubtime_baidu").text();
 			String source = doc.getElementById("source_baidu").select("span[itemprop*=name]").text();
 			String content = doc.select("div[itemprop*=articleBody]").text();
-			String rs = title + ConstantParams.CHANGE_LINE + date + ConstantParams.CHANGE_LINE + source
-					+ ConstantParams.CHANGE_LINE + content;
+			String rs = title + Constants.CHANGE_LINE + date + Constants.CHANGE_LINE + source
+					+ Constants.CHANGE_LINE + content;
 			StringUtils.string2file(rs, outputPath);
 
 		} catch (IOException e) {

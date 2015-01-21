@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 
 /**
  * 文档相似度计算
@@ -87,7 +87,7 @@ public class SimilaryUtils {
    */
   public static void splitWords(String inputPath, String outputPath) {
     String str = StringUtils.getContent(inputPath);
-    String splitStr = SplitWordsUtils.ikSplit(str, ConstantParams.CHANGE_LINE);
+    String splitStr = SplitWordsUtils.ikSplit(str, Constants.CHANGE_LINE);
     StringUtils.string2file(splitStr, outputPath);
   }
 
@@ -148,7 +148,7 @@ public class SimilaryUtils {
     for (String word : list) {
       int num = getWordNum(word, list);
       Double tf = num / allNums;
-      result += word + ConstantParams.TABLE + tf + ConstantParams.CHANGE_LINE;
+      result += word + Constants.TABLE + tf + Constants.CHANGE_LINE;
     }
     StringUtils.string2file(result, outputPath);
   }
@@ -162,7 +162,7 @@ public class SimilaryUtils {
       BufferedReader br = new BufferedReader(fr);
       String tmp = "";
       while ((tmp = br.readLine()) != null) {
-        String[] tmps = tmp.split(ConstantParams.TABLE);
+        String[] tmps = tmp.split(Constants.TABLE);
         if (tmps.length > 1) {
           map.put(tmps[0], Double.valueOf(tmps[1]));
         }
@@ -184,7 +184,7 @@ public class SimilaryUtils {
       BufferedReader br = new BufferedReader(fr);
       String tmp = "";
       while ((tmp = br.readLine()) != null) {
-        String[] tmps = tmp.split(ConstantParams.TABLE);
+        String[] tmps = tmp.split(Constants.TABLE);
         if (tmps.length > 1) {
           map.put(tmps[flag[0]], Double.valueOf(tmps[flag[1]]));
         }
@@ -219,7 +219,7 @@ public class SimilaryUtils {
       String tmp = "";
       while ((tmp = br.readLine()) != null) {
         Double df = 0.0;
-        String[] tmps = tmp.split(ConstantParams.TABLE);
+        String[] tmps = tmp.split(Constants.TABLE);
         for (String fileName : filesName) {
           String content = stringUtils.getContent(fileName);
           if (content.contains(tmps[0])) {
@@ -227,8 +227,8 @@ public class SimilaryUtils {
           }
         }
         result +=
-            tmps[0] + ConstantParams.TABLE + tmps[1] + ConstantParams.TABLE + df
-                + ConstantParams.CHANGE_LINE;
+            tmps[0] + Constants.TABLE + tmps[1] + Constants.TABLE + df
+                + Constants.CHANGE_LINE;
       }
       br.close();
       is.close();
@@ -256,13 +256,13 @@ public class SimilaryUtils {
       BufferedReader br = new BufferedReader(isr);
       String tmp = "";
       while ((tmp = br.readLine()) != null) {
-        String[] tmps = tmp.split(ConstantParams.TABLE);
+        String[] tmps = tmp.split(Constants.TABLE);
         Double tfidf = 0.0;
         Double idf = Math.log(nums / Double.valueOf(tmps[2]));
         System.out.println("tmps[2]:" + tmps[2]);
         System.out.println("idf:" + idf);
         tfidf = Double.valueOf(tmps[1]) * idf;
-        result += tmps[0] + ConstantParams.TABLE + tfidf + ConstantParams.CHANGE_LINE;
+        result += tmps[0] + Constants.TABLE + tfidf + Constants.CHANGE_LINE;
       }
       br.close();
       is.close();

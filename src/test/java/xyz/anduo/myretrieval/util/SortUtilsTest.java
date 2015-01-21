@@ -3,7 +3,7 @@ package xyz.anduo.myretrieval.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 import junit.framework.TestCase;
 
 public class SortUtilsTest extends TestCase {
@@ -18,7 +18,7 @@ public class SortUtilsTest extends TestCase {
 		@SuppressWarnings("unchecked")
 		Map<String, Integer> rs = SortUtils.sortByValue(map, true);
 		for (Object key : rs.keySet()) {
-			System.out.println(key + ConstantParams.TABLE + rs.get(key));
+			System.out.println(key + Constants.TABLE + rs.get(key));
 		}
 	}
 

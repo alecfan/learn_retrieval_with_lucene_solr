@@ -51,6 +51,11 @@ public class FullTextSearchParams {
   // 统计域
   private Map<String, String> facetField = Maps.newHashMap();
 
+  private long numFound;
+
+  // 默认显示字数
+  private int viewNums;
+
   public String getQueryWord() {
     return queryWord;
   }
@@ -153,6 +158,22 @@ public class FullTextSearchParams {
 
   public void setFacetField(Map<String, String> facetField) {
     this.facetField = facetField;
+  }
+
+  public long getNumFound() {
+    return numFound;
+  }
+
+  public void setNumFound(long numFound) {
+    this.numFound = numFound;
+  }
+
+  public int getViewNums() {
+    return viewNums;
+  }
+
+  public void setViewNums(int viewNums) {
+    this.viewNums = viewNums;
   }
 
 

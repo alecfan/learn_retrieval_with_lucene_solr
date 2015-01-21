@@ -13,7 +13,7 @@ public interface FullTextSevice {
    * @Description: 启动服务
    * @return int 返回类型
    */
-  public int start();
+  public int startService(String serverName);
 
   /**
    * 
@@ -21,7 +21,7 @@ public interface FullTextSevice {
    * @Description: 关闭服务
    * @return int 返回类型
    */
-  public int stop();
+  public int stopService(String serverName);
 
 
   /**
@@ -37,11 +37,11 @@ public interface FullTextSevice {
 
   /**
    * 
-   * @Title: doSearch
+   * @Title: doQuery
    * @Description: 搜索
    * @return FullTextResult 返回类型
    */
-  public FullTextResult doSearch(FullTextSearchParams params);
+  public FullTextResult doQuery(FullTextSearchParams params);
 
 
 

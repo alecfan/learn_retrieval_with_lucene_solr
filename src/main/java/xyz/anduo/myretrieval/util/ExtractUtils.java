@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import xyz.anduo.myretrieval.config.ConstantParams;
+import xyz.anduo.myretrieval.config.Constants;
 
 public class ExtractUtils {
 	/**
@@ -35,10 +35,10 @@ public class ExtractUtils {
 			br = new BufferedReader(fr);
 			String temp = "";
 			while ((temp = br.readLine()) != null) {
-				String[] temps = temp.split(ConstantParams.SINGLE_BLANK);
+				String[] temps = temp.split(Constants.SINGLE_BLANK);
 				String str = "";
 				for (String rule : temps) {
-					str += (regex + "/" + rule + "(.?)" + ConstantParams.SINGLE_BLANK);
+					str += (regex + "/" + rule + "(.?)" + Constants.SINGLE_BLANK);
 				}
 				str = str.substring(0, str.length() - 1);
 				result.add(str);
@@ -107,13 +107,13 @@ public class ExtractUtils {
 			br = new BufferedReader(isr);
 			String tmp = "";
 			while ((tmp = br.readLine()) != null) {
-				String[] tmps = tmp.split(ConstantParams.SINGLE_BLANK);
+				String[] tmps = tmp.split(Constants.SINGLE_BLANK);
 				if (tmps.length > 1) {
-					result += tmp + ConstantParams.CHANGE_LINE;
+					result += tmp + Constants.CHANGE_LINE;
 				} else if (tmps.length == 1) {
 					String[] wordsTmps = tmps[0].split("/");
 					if (wordsTmps[0].length() != 1) {
-						result += tmp + ConstantParams.CHANGE_LINE;
+						result += tmp + Constants.CHANGE_LINE;
 					}
 				}
 			}
@@ -157,7 +157,7 @@ public class ExtractUtils {
 			while ((tmp = br.readLine()) != null) {
 				if (!list.contains(tmp)) {
 					list.add(tmp);
-					result += tmp + ConstantParams.CHANGE_LINE;
+					result += tmp + Constants.CHANGE_LINE;
 				}
 			}
 			StringUtils.string2file(result, outputPath);
@@ -188,9 +188,9 @@ public class ExtractUtils {
 		String result = "";
 		try {
 			String sourceContent = StringUtils.getContent(sourcePath);
-			String[] sourceWords = sourceContent.split(ConstantParams.SINGLE_BLANK);
+			String[] sourceWords = sourceContent.split(Constants.SINGLE_BLANK);
 			for (String word : wordsList) {
-				String[] words = word.split(ConstantParams.SINGLE_BLANK);
+				String[] words = word.split(Constants.SINGLE_BLANK);
 
 				// 读分词之后的源文件
 				Set<String> leftSet = new HashSet<String>();
@@ -348,8 +348,8 @@ public class ExtractUtils {
 
 					}
 				}
-				result += word + ConstantParams.TABLE + left + ConstantParams.TABLE + right
-						+ ConstantParams.CHANGE_LINE;
+				result += word + Constants.TABLE + left + Constants.TABLE + right
+						+ Constants.CHANGE_LINE;
 			}
 
 			StringUtils.string2file(result, outputPath);
@@ -388,7 +388,7 @@ public class ExtractUtils {
 			}
 			for (String key : map.keySet()) {
 				Integer value = map.get(key);
-				result += key + ConstantParams.TABLE + value + ConstantParams.CHANGE_LINE;
+				result += key + Constants.TABLE + value + Constants.CHANGE_LINE;
 			}
 
 			StringUtils.string2file(result, outputPath);
@@ -428,14 +428,14 @@ public class ExtractUtils {
 			Map<String, Integer> map = new HashMap<String, Integer>();
 
 			while ((tmp = br.readLine()) != null) {
-				String[] tmps = tmp.split(ConstantParams.TABLE);
+				String[] tmps = tmp.split(Constants.TABLE);
 				map.put(tmps[0], Integer.parseInt(tmps[1]));
 			}
 			@SuppressWarnings("unchecked")
 			Map<String, Integer> sortMap = SortUtils.sortByValue(map);
 			for (String key : sortMap.keySet()) {
 				Integer value = map.get(key);
-				result += key + ConstantParams.TABLE + value + ConstantParams.CHANGE_LINE;
+				result += key + Constants.TABLE + value + Constants.CHANGE_LINE;
 			}
 			StringUtils.string2file(result, outputPath);
 		} catch (Exception e) {

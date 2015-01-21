@@ -8,12 +8,12 @@ import xyz.anduo.retrieve.api.FullTextSevice;
 public abstract class FullTextServiceImpl implements FullTextSevice {
 
   @Override
-  public int start() {
+  public int startService(String serverName) {
     return 0;
   }
 
   @Override
-  public int stop() {
+  public int stopService(String serverName) {
     return 0;
   }
 
@@ -23,7 +23,7 @@ public abstract class FullTextServiceImpl implements FullTextSevice {
   }
 
   @Override
-  public FullTextResult doSearch(FullTextSearchParams params) {
+  public FullTextResult doQuery(FullTextSearchParams params) {
     return null;
   }
 
