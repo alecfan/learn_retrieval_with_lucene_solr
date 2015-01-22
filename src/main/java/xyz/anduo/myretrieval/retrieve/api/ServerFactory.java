@@ -1,8 +1,8 @@
-package xyz.anduo.retrieve.api;
+package xyz.anduo.myretrieval.retrieve.api;
 
 import java.util.Map;
 
-import xyz.anduo.retrieve.spi.SolrService;
+import xyz.anduo.myretrieval.retrieve.spi.SolrService;
 
 public class ServerFactory {
   

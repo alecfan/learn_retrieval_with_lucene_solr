@@ -1,4 +1,4 @@
-package xyz.anduo.retrieve.spi;
+package xyz.anduo.myretrieval.retrieve.spi;
 
 import java.util.List;
 
@@ -6,8 +6,9 @@ import org.apache.solr.client.solrj.response.FacetField;
 
 import com.google.common.collect.Lists;
 
-import xyz.anduo.retrieve.api.FullTextResult;
+import xyz.anduo.myretrieval.retrieve.api.FullTextResult;
 
+@SuppressWarnings("rawtypes")
 public class FullTextResultImpl implements FullTextResult {
 
   private List resultList = Lists.newArrayList();
@@ -31,6 +32,7 @@ public class FullTextResultImpl implements FullTextResult {
     return facetList;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void setFacetList(List facetList) {
     this.facetList = facetList;

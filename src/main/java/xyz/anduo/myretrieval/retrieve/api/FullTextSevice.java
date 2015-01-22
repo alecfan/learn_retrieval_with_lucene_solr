@@ -1,4 +1,4 @@
-package xyz.anduo.retrieve.api;
+package xyz.anduo.myretrieval.retrieve.api;
 
 /**
  * @ClassName: FullTextSevice
@@ -28,11 +28,10 @@ public interface FullTextSevice {
    * 
    * @Title: doIndex
    * @Description: 创建索引
-   * @param params
+   * @param fullTextIndexParams
    * @return void 返回类型
-   * @throws Exception
    */
-  public void doIndex(FullTextIndexParams params) throws Exception;
+  public void doIndex(FullTextIndexParams fullTextIndexParams);
 
 
   /**
@@ -41,8 +40,10 @@ public interface FullTextSevice {
    * @Description: 搜索
    * @return FullTextResult 返回类型
    */
-  public FullTextResult doQuery(FullTextSearchParams params);
+  public FullTextResult doQuery(FullTextSearchParams fullTextSearchParams);
 
+
+  public void setServerName(String serverName);
 
 
 }

@@ -1,4 +1,4 @@
-package xyz.anduo.retrieve.api;
+package xyz.anduo.myretrieval.retrieve.api;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import java.util.List;
  * @date 2015年1月21日 下午7:42:07
  *
  */
+@SuppressWarnings("rawtypes")
 public interface FullTextResult {
   
   public List getResultList();
