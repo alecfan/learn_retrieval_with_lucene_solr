@@ -3,9 +3,9 @@ package xyz.anduo.myretrieval.retrieve.spi;
 import xyz.anduo.myretrieval.retrieve.api.FullTextIndexParams;
 import xyz.anduo.myretrieval.retrieve.api.FullTextResult;
 import xyz.anduo.myretrieval.retrieve.api.FullTextSearchParams;
-import xyz.anduo.myretrieval.retrieve.api.FullTextSevice;
+import xyz.anduo.myretrieval.retrieve.api.FullTextService;
 
-public abstract class FullTextServiceImpl implements FullTextSevice {
+public abstract class FullTextServiceImpl implements FullTextService {
   private String serverName;
 
   @Override

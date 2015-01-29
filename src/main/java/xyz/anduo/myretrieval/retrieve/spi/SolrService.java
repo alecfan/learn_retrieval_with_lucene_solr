@@ -1,8 +1,10 @@
 package xyz.anduo.myretrieval.retrieve.spi;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
@@ -69,14 +71,48 @@ public class SolrService extends FullTextServiceImpl {
   public FullTextResult doQuery(FullTextSearchParams fullTextSearchParams) {
     FullTextResult rt = new SolrResult();
     try {
-      SolrServer solrServer = this.solrServerMap.get(this.getServerName());
-      String queryString = "";
       String qw = fullTextSearchParams.getQueryWord();
-      List<String> assigmentFields = fullTextSearchParams.getAssigmentFields();
-      for (String field : assigmentFields) {
-        queryString += field + ":" + qw + " OR ";
+      if (StringUtils.isEmpty(qw)) {
+        return null;
       }
+
+      List<String> assignmentFields = fullTextSearchParams.getAssignmentFields();
+      List<Map<String, String>> assignFields = fullTextSearchParams.getAssignFields();
+      String queryString = "";
+
+      if (assignmentFields != null && assignmentFields.size() > 0) {
+        for (String field : assignmentFields) {
+          queryString += field + ":" + qw + " OR ";
+        }
+        int pos = queryString.lastIndexOf(Constants.SINGLE_BLANK + "OR" + Constants.SINGLE_BLANK);
+        queryString = queryString.substring(0, pos);
+      } else if (assignFields != null && assignFields.size() > 0) {
+        String lastValue = "";
+        for (Map<String, String> assignField : assignFields) {
+          Set<String> set = assignField.keySet();
+          Iterator<String> iter = set.iterator();
+          while (iter.hasNext()) {
+            String key = iter.next();
+            String value = assignField.get(key);
+            lastValue = value;
+            queryString += key + ":" + qw + Constants.SINGLE_BLANK + value + Constants.SINGLE_BLANK;
+          }
+        }
+        int pos = queryString.lastIndexOf(Constants.SINGLE_BLANK + lastValue + Constants.SINGLE_BLANK);
+        queryString = queryString.substring(0, pos);
+      } else {
+        queryString = qw;
+      }
+
+      /*
+       * for (String field : assigmentFields) { queryString += field + ":" + qw + " OR "; }
+       */
+
+
+      System.out.println(queryString);
+
       SolrQuery params = new SolrQuery(queryString);
+      SolrServer solrServer = this.solrServerMap.get(this.getServerName());
       QueryResponse response = solrServer.query(params);
       SolrDocumentList results = response.getResults();
       rt.setNumFound(results.getNumFound());

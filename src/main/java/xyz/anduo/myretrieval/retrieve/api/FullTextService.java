@@ -1,13 +1,13 @@
 package xyz.anduo.myretrieval.retrieve.api;
 
 /**
- * @ClassName: FullTextSevice
+ * @ClassName: FullTextService
  * @Description: 全文搜索服务
  * @author anduo
  * @date 2015年1月21日 下午7:38:07
  * 
  */
-public interface FullTextSevice {
+public interface FullTextService {
   /**
    * @Title: start
    * @Description: 启动服务

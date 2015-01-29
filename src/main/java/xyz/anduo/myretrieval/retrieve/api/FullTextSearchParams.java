@@ -15,10 +15,19 @@ import com.google.common.collect.Maps;
  */
 public class FullTextSearchParams {
 
+  public enum OPERATOR {
+    AND, OR
+  }
+
   // 搜索关键词
   private String queryWord = "";
   // 指定搜索域
-  private List<String> assigmentFields = Lists.newArrayList();
+  private List<String> assignmentFields = Lists.newArrayList();
+
+  /**
+   * 指定搜索域与搜索域之间的关系 Map<String, String> <域名,操作关系> 如 <name,AND>
+   */
+  private List<Map<String, String>> assignFields = Lists.newArrayList();
 
   // 显示域
   private String[] viewFields;
@@ -64,12 +73,20 @@ public class FullTextSearchParams {
     this.queryWord = queryWord;
   }
 
-  public List<String> getAssigmentFields() {
-    return assigmentFields;
+  public List<String> getAssignmentFields() {
+    return assignmentFields;
   }
 
-  public void setAssigmentFields(List<String> assigmentFields) {
-    this.assigmentFields = assigmentFields;
+  public void setAssignmentFields(List<String> assignmentFields) {
+    this.assignmentFields = assignmentFields;
+  }
+
+  public List<Map<String, String>> getAssignFields() {
+    return assignFields;
+  }
+
+  public void setAssignFields(List<Map<String, String>> assignFields) {
+    this.assignFields = assignFields;
   }
 
   public String[] getViewFields() {
